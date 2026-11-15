@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123b67"><title>Basildon ⇄ Barking Commute</title>
+<link rel="manifest" href="manifest.json"><link rel="apple-touch-icon" href="icon.png">
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#14243a;font:16px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif}
+main{max-width:560px;margin:auto;padding:16px 16px 32px}.hero{background:linear-gradient(135deg,#123b67,#087e8b);color:white;border-radius:20px;padding:22px}
+.eyebrow{font-size:12px;letter-spacing:1.5px;opacity:.85}.hero h1{font-size:25px;margin:8px 0}.hero p{margin:0;font-size:14px;opacity:.9}
+.tabs{display:flex;gap:9px;margin:16px 0}.tabs button{flex:1;border:0;border-radius:12px;padding:13px;font-weight:700;background:white;color:#18324d}.tabs button.active{background:#147c55;color:white}
+.card{background:white;border:1px solid #e1e8f0;border-radius:16px;padding:16px;margin:12px 0}.card h2{font-size:18px;margin:0 0 5px}.muted{color:#63758a;font-size:13px}
+a.btn{display:block;text-align:center;text-decoration:none;background:#147c55;color:white;font-weight:700;border-radius:12px;padding:14px;margin-top:12px}
+a.route{display:block;padding:13px;border:1px solid #e1e8f0;border-radius:12px;margin-top:9px;text-decoration:none;color:#14243a}
+a.route b{display:block}a.route span{display:block;color:#63758a;font-size:12px;margin-top:4px}
+small{color:#63758a;line-height:1.5;display:block;margin-top:12px}
+</style></head><body><main>
+<div class="hero"><div class="eyebrow">YOUR WEEKDAY COMMUTE</div><h1>Basildon ⇄ Barking</h1><p>A13 • A127 • Traffic & incidents</p></div>
+<div class="tabs"><button id="am" class="active" onclick="trip(false)">🌅 Morning</button><button id="pm" onclick="trip(true)">🌇 Evening</button></div>
+<div class="card"><h2 id="direction">Basildon → Barking Jobcentre</h2><div id="times" class="muted">Leave around 8:30–9:00 am · Monday–Friday</div>
+<a class="btn" id="fast" target="_blank" rel="noopener">🚦 Open fastest route in Google Maps</a>
+<a class="route" id="a13" target="_blank" rel="noopener"><b>🛣️ Compare A13</b><span>Route via A13 · live traffic in Maps</span></a>
+<a class="route" id="a127" target="_blank" rel="noopener"><b>🛣️ Compare A127</b><span>Route via A127 · live traffic in Maps</span></a></div>
+<div class="card"><h2>🚨 Incidents & road closures</h2>
+<a class="route" href="https://www.google.com/maps/search/?api=1&query=traffic+Basildon+Barking" target="_blank"><b>Google Maps traffic</b><span>Traffic layers, delays and reported incidents</span></a>
+<a class="route" href="https://www.essexhighways.org/live-traffic-map" target="_blank"><b>Essex Highways live map</b><span>Essex roadworks and closures</span></a>
+<a class="route" href="https://nationalhighways.co.uk/travel-updates/" target="_blank"><b>National Highways</b><span>Major road incidents and travel updates</span></a>
+</div>
+<div class="card"><h2>📍 Your destinations</h2><div class="muted">Home: SS14 3TW<br>Work: Barking Jobcentre, Phoenix House, 12–14 Wakering Road, Barking IG11 8QB</div></div>
+<small>Traffic is refreshed by Google Maps when opened. This first version links to live services; it does not yet independently calculate route comparisons, poll incidents, or send push alerts. Always check traffic safely before driving.</small>
+</main>
+<script>
+const home="SS14 3TW",work="Barking Jobcentre, Phoenix House, 12-14 Wakering Road, Barking IG11 8QB";
+function url(o,d,way){let x="https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(o)+"&destination="+encodeURIComponent(d)+"&travelmode=driving";if(way)x+="&waypoints="+encodeURIComponent(way);return x}
+function trip(e){let o=e?work:home,d=e?home:work;document.getElementById("direction").textContent=e?"Barking Jobcentre → Basildon":"Basildon → Barking Jobcentre";document.getElementById("times").textContent=e?"Leave around 4:30–5:00 pm · Monday–Friday":"Leave around 8:30–9:00 am · Monday–Friday";document.getElementById("fast").href=url(o,d);document.getElementById("a13").href=url(o,d,"A13");document.getElementById("a127").href=url(o,d,"A127");document.getElementById("am").classList.toggle("active",!e);document.getElementById("pm").classList.toggle("active",e)}
+trip(false);
+</script></body></html>

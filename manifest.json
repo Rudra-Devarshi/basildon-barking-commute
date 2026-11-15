@@ -1,0 +1,15 @@
+{
+  "name": "Basildon Barking Commute",
+  "short_name": "Commute",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3f6fa",
+  "theme_color": "#123b67",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "1024x1024",
+      "type": "image/png"
+    }
+  ]
+}
